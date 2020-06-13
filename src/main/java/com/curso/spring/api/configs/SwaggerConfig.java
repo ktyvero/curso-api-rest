@@ -1,8 +1,6 @@
 package com.curso.spring.api.configs;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.curso.spring.api.security.UsuarioDetailServiceImpl;
 

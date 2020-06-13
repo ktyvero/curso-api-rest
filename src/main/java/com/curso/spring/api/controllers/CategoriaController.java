@@ -10,6 +10,7 @@ import com.curso.spring.api.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ public class CategoriaController {
 
     @Autowired //para inyectar dependencia 
     private CategoriaRepository categoriaRepository;
+
     
     @GetMapping("/saludar/{nombre}")
     public String saludar(@PathVariable String nombre)
@@ -29,6 +31,7 @@ public class CategoriaController {
     }
 
     @GetMapping("categorias/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Response<Categoria>> getCategoriaPorID(@PathVariable int id)
     {
         Response<Categoria> response=new Response<>();
